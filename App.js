@@ -1,30 +1,32 @@
-const parent  = React.createElement(
-    "div",
-    {id : "parent"},
-    React.createElement("div",{id : "child"},[
-        [React.createElement("h1", {id : "heading1"} , "This is an h1 Tag"),
-         React.createElement("h2", {id : "heading2"} , "This is an h2 Tag")
-        ],
-        [React.createElement("h1", {id : "heading1"} , "This is an h1 Tag"),
-         React.createElement("h2", {id : "heading2"} , "This is an h2 Tag")
-        ]
-    ]));
+import React from "react";
+import ReactDOM from "react-dom/client"; 
 
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-    root.render(parent);
-    console.log(parent);
+/*
+    JSX - HTML or XML like syntax but not a HTML in JS.
+    JSX is transpiled before it reaches the JS Engine by "PARCEL" which managed by "Babel".
+    "Babel" converts JSX to code that Js Engine Understands.
+    JSX => React.createElement => reactElement-JS Object => HTML Elemnt(render).
+    JSX should be written in "camelCasing".
+    For Multiples lines wrap it in a round bracket.
+*/
 
-    // React object converts to HTMl which browser understands
-    // order of execution of code is important
-    // React renders only the object which we asked to render
+// React Element
+const JsxHeading = (
+<h1 className="head" tabIndex="5">
+    Namaste React using JSX</h1>
+);
 
-// const heading = React.createElement(
-//     "h1",
-//     {id : "heading1"},
-//     "Hello World From React"); 
-//     /* Here it creates an Js object which consists of h1 tag,attributes as an object,
-//     children or multiple children as arrays which are inside props */
+// React Component
+// Class Based Components - OLD
 
-// const root = ReactDOM.createRoot(document.getElementById("root"));
+/*  React Functional Component - NEW
+    The component name should be "Capital"
+*/
+const HeadingComponent = () => {
+     
+    return <h1 className="heading">Namaste React Functional Component</h1>;
+}
 
-// root.render(heading);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(JsxHeading);
