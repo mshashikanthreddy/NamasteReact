@@ -1,35 +1,76 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; 
 
-const elem = <span>React Element</span>
+/**
+ * Header
+ *  - Logo
+ *  - Nav(Login,Signup,Home,profile).
+ * Body
+ *  - Restaurant Container
+ *  - Restaurant Card
+ *      - Img
+ *      - Name of Res, Star Rating, Cuisines, Delivery Time. 
+ * Footer
+ *  - contact
+ *  - careers
+ *  - Address
+ *  - copyrights
+ * 
+ */
 
-const Title = () => (
-    <h1 className="head" tabIndex="5">
-        {elem}
-        Namaste React using JSX
-    </h1>
-);  
+const Header = () => {
+    return (
+        <div className="header">
+            <div className="logo-Container">
+                <img 
+                    className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP57IpBjnxab7h53tzZMlgmXmd9mWVsDtBRfzb7quotfBSKi1ibSkCXSPNhSuiXqKDqTY&usqp=CAU" 
+                />
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>Login/Signup</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    )
+}
 
-// Component Composition => Using component inside another component.
-const HeadingComponent = () => (
-    <div id="container">
-        <Title />
-        <h1 className="heading">Namaste React Functional Component</h1>
-    </div>    
-);
+const RestaurantCard = () => {
+    return (
+        <div className="res-card" style={{backgroundColor : " #fb2323e0"}}>
+            <img className="res-logo" 
+                src="https://b.zmtcdn.com/data/pictures/chains/1/50691/ecfdc75d21bd7cd9d880f05c8382bc65.jpg"
+            />
+            <h3>Meghana Foods</h3>
+            <h4>Indian,Asian,Continental</h4>
+            <h4>4.5 stars</h4>
+            <h4>35 mins</h4>
+        </div>
+    )
+};
 
-// <Title /> and <Title></Title> both are same.
-// we can also write as {Title()} as it is a normal Javascript function.
+const Body = () => {
+    return (
+        <div className="body">
+            <div className="search">Search</div>
+            <div className="res-container">
+                <RestaurantCard />
+            </div>
+        </div>
+    )
+}
 
-/* If we want to use "React Element" inside a "React component" we just
-have to write in "{title}" curly brackets. we can write any "JS" inside it. */ 
+const Applayout = () => {
+    return (
+        <div className="app">
+            <Header />
+            <Body />
+        </div>
+    )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<HeadingComponent />);
-
-/*Here we can use React Component inside React Element
-React Component inside React Component
-React Element inside React Element.
-"It follows synchoronous way of execution so, we cannot use an 
-element or an component before it intialized."*/
+root.render(<Applayout />);

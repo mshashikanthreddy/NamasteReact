@@ -1,5 +1,52 @@
-#heading1 {
-    color : green ;
-    font-family:'Times New Roman', Times, serif;
+
+.header {
+    display : flex;
+    justify-content :space-between;
+    border : 1px solid black;
+    border-style: double;
+}
+
+.logo {
+    width : 130px;
+}
+
+.nav-items {
+    padding : 0px 20px;
+}
+
+.nav-items > ul {
+    font-size: 15px;
+    display : flex;
+    list-style-type: none;
+}
+.nav-items > ul > li:hover{
+    border : 1px solid black;
+}
+
+.nav-items > ul > li {
+    padding: 10px;
+    margin: 10px;
+}
+
+.res-card {
+    padding : 5px;
+    width: 200px;
+    height: 300px;
+    color : rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.res-card:hover {
+    border : 2px solid black;
+    cursor: pointer;
+}
+
+.search {
+    padding: 10px;
+}
+
+.res-logo {
+    width : 100%;
     
 }
