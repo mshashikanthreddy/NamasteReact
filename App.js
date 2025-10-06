@@ -1,32 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; 
 
-/*
-    JSX - HTML or XML like syntax but not a HTML in JS.
-    JSX is transpiled before it reaches the JS Engine by "PARCEL" which managed by "Babel".
-    "Babel" converts JSX to code that Js Engine Understands.
-    JSX => React.createElement => reactElement-JS Object => HTML Elemnt(render).
-    JSX should be written in "camelCasing".
-    For Multiples lines wrap it in a round bracket.
-*/
+const elem = <span>React Element</span>
 
-// React Element
-const JsxHeading = (
-<h1 className="head" tabIndex="5">
-    Namaste React using JSX</h1>
+const Title = () => (
+    <h1 className="head" tabIndex="5">
+        {elem}
+        Namaste React using JSX
+    </h1>
+);  
+
+// Component Composition => Using component inside another component.
+const HeadingComponent = () => (
+    <div id="container">
+        <Title />
+        <h1 className="heading">Namaste React Functional Component</h1>
+    </div>    
 );
 
-// React Component
-// Class Based Components - OLD
+// <Title /> and <Title></Title> both are same.
+// we can also write as {Title()} as it is a normal Javascript function.
 
-/*  React Functional Component - NEW
-    The component name should be "Capital"
-*/
-const HeadingComponent = () => {
-     
-    return <h1 className="heading">Namaste React Functional Component</h1>;
-}
+/* If we want to use "React Element" inside a "React component" we just
+have to write in "{title}" curly brackets. we can write any "JS" inside it. */ 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(JsxHeading);
+root.render(<HeadingComponent />);
+
+/*Here we can use React Component inside React Element
+React Component inside React Component
+React Element inside React Element.
+"It follows synchoronous way of execution so, we cannot use an 
+element or an component before it intialized."*/
