@@ -18,3 +18,30 @@
 - Https
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+
+/**
+ * Header
+ *  - Logo
+ *  - Nav(Login,Signup,Home,profile).
+ * Body
+ *  - Restaurant Container
+ *  - Restaurant Card
+ *      - Img
+ *      - Name of Res, Star Rating, Cuisines, Delivery Time. 
+ * Footer
+ *  - contact
+ *  - careers
+ *  - Address
+ *  - copyrights
+ * 
+ */
+ 
+ # There are two types of exports 
+    - Default Exports
+        # export default components - used when export one component
+
+
+    - Named Exports
+        # export const components - used for exporting more than one components.
+

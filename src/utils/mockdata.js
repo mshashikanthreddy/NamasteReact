@@ -1,60 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client"; 
 
-/**
- * Header
- *  - Logo
- *  - Nav(Login,Signup,Home,profile).
- * Body
- *  - Restaurant Container
- *  - Restaurant Card
- *      - Img
- *      - Name of Res, Star Rating, Cuisines, Delivery Time. 
- * Footer
- *  - contact
- *  - careers
- *  - Address
- *  - copyrights
- * 
- */
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-Container">
-                <img 
-                    className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP57IpBjnxab7h53tzZMlgmXmd9mWVsDtBRfzb7quotfBSKi1ibSkCXSPNhSuiXqKDqTY&usqp=CAU" 
-                />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>Login/Signup</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const RestaurantCard = (props) => {
-    const {resData} = props;
-    const {name,cuisines,avgRating,costForTwo,cloudinaryImageId,sla} = resData?.info;
-    return (
-        <div className="res-card" style={{backgroundColor : " #fb2323e0"}}>
-            <img className="res-logo" 
-                src={
-                    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_112,h_112,c_fill/"+cloudinaryImageId
-            }
-            />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(",")}</h4>
-            <h4>{avgRating} Rating</h4>
-            <h4>{costForTwo}</h4>
-            <h4>{sla.minDeliveryTime} Min</h4>
-        </div>
-    )
-};
 
 const resList = [{
                 "info": {
@@ -772,34 +716,6 @@ const resList = [{
                           "cta": {
 
                           }
-                        } ]  // Here array of JSON objects should be declared.
-                      
-                          
+                        } ]
 
-                            
-
-  const Body = () => {
-      return (
-          <div className="body">
-              <div className="search">Search</div>
-              <div className="res-container">
-                  {resList.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData={restaurant} /> 
-                  ))};
-              </div>
-          </div>
-      )
-  } // we can pass "index" but it is not the efficient way.
-
-  const Applayout = () => {
-      return (
-          <div className="app">
-              <Header />
-              <Body />
-          </div>
-      )
-  }
-
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-
-  root.render(<Applayout />);
+export default resList;
