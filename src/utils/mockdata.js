@@ -145,8 +145,7 @@ const resList = [{
                         "address": "124, 1st A Cross Rd, Near Jyoti Nivas College Road, Khb Colony, 5Th Block, Koramangala, Bengaluru, Karnataka 560095",
                         "locality": "Koramangala",
                         "areaName": "Koramangala",
-                        "costForTwo": "50000",
-                        "costForTwoMessage": "₹500 FOR TWO",
+                        "costForTwo": "₹500 for two",
                         "cuisines": [
                           "Biryani",
                           "Andhra",
@@ -718,4 +717,4 @@ const resList = [{
                           }
                         } ]
 
-export default resList;
+export default resList; 

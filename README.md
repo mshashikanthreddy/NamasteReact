@@ -41,7 +41,10 @@
     - Default Exports
         # export default components - used when export one component
 
-
     - Named Exports
         # export const components - used for exporting more than one components.
+
+# state variables
+    - useState
+    - useEffect
 
