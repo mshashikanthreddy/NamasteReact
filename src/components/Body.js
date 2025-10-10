@@ -7,6 +7,8 @@ const Body = () => {
     // "Hooks" gives the access to use state variable and other react features without writing a class.
     //Local State Variable - super powerful variable 
     const [ListOfRestaurants, setListOfRest]  = useState([]); 
+    const [filteredRestaurant , setfilteredRestaurant] = useState([]);
+    const [searchText , setSearchText] = useState("");
     
     /* "React" follows Loads->render->API->re-renders.
         which is the best practice rather than displaying blank page which is not a best practice.
@@ -25,13 +27,33 @@ const Body = () => {
     console.log(json);
 
     // Optional chaining
-    setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setfilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
    }
 
    //conditional Rendering
    return ListOfRestaurants.length === 0?<Shimmer />:(
           <div className="body">
               <div className="filter">
+                <div className="search">
+                <input type="text" className="search-box" value={searchText}
+                    onChange={(e) => {
+                        setSearchText(e.target.value);
+                    }}
+                />
+                <button
+                    onClick={() => {
+                        //Filter the restaurant cards and updates UI for each value like for each "letter" it re-renders.
+                        const filteredRestaurant = ListOfRestaurants.filter(
+                            (res) => res.info.name.toLowerCase().includes(searchText)
+                        );                  
+                    setfilteredRestaurant(filteredRestaurant);
+                    
+                }}
+                >
+                Search
+                </button>
+                </div>
                 <button className="filter-btn"
                 onClick={() => {
                     const filteredList = ListOfRestaurants.filter(
@@ -43,7 +65,7 @@ const Body = () => {
                 </button>
               </div>
               <div className="res-container">
-                  {ListOfRestaurants.map((restaurant) => (
+                  {filteredRestaurant.map((restaurant) => (
                     <RestaurantCard key={restaurant.info.id} resData={restaurant} /> 
                   ))};
               </div>
