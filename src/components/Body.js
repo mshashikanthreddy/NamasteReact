@@ -6,8 +6,12 @@ const Body = () => {
 
     // "Hooks" gives the access to use state variable and other react features without writing a class.
     //Local State Variable - super powerful variable 
+
+    /* Always use the useState function in a component and avoid using it outside of component,
+        Inside "if", "for" , any function which creates hindrance to React application. */
+    
     const [ListOfRestaurants, setListOfRest]  = useState([]); 
-    const [filteredRestaurant , setfilteredRestaurant] = useState([]);
+    const [filteredRestaurant , setFilteredRestaurant] = useState([]);
     const [searchText , setSearchText] = useState("");
     
     /* "React" follows Loads->render->API->re-renders.
@@ -21,14 +25,15 @@ const Body = () => {
     fetchData();
    },[])
 
-   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+   //Here we are using "corsproxy" which solves CORS problem and works for outer use.
+    const fetchData = async () => {
+    const data = await fetch("https://corsproxy.io/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     const json = await data.json();
     console.log(json);
 
     // Optional chaining
     setListOfRest(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setfilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
+    setFilteredRestaurant(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); 
    }
 
    //conditional Rendering
@@ -47,7 +52,7 @@ const Body = () => {
                         const filteredRestaurant = ListOfRestaurants.filter(
                             (res) => res.info.name.toLowerCase().includes(searchText)
                         );                  
-                    setfilteredRestaurant(filteredRestaurant);
+                    setFilteredRestaurant(filteredRestaurant);
                     
                 }}
                 >
@@ -57,9 +62,9 @@ const Body = () => {
                 <button className="filter-btn"
                 onClick={() => {
                     const filteredList = ListOfRestaurants.filter(
-                    (res) => res.info.avgRating > 4.5
+                    (res) => res.info.avgRating > 4.6
                 );
-                setListOfRest(filteredList); // Here we are using "setListOfRest" which is function which updates list when it is called.
+                setFilteredRestaurant(filteredList); // Here we are using "setListOfRest" which is function which updates list when it is called.
             }}
                 >Top Rated Restaurants
                 </button>

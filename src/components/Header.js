@@ -12,6 +12,13 @@ console.log("Header Render"); // Here once "setBtnNameReact" function notices a 
 /* Actually, const variable cannot be reassigned but when it re-renders the new "const" variable is again 
     created which is assigned to new value */ 
 
+// if no dependency array => useEffect is called on every render
+// if there is dependency array([]) => useEffect just render only once on intial render.
+// if dependency is [btnNameReact] => useEffect is called every time btnNameReact.
+useEffect(() => {
+
+},[btnNameReact]);
+
     return (
         <div className="header">
             <div className="logo-Container">
