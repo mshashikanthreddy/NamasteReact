@@ -47,4 +47,6 @@
 # state variables
     - useState
     - useEffect
-
+# Routing
+    - Client Side Rendering - React
+    - Server Side Rendering 
