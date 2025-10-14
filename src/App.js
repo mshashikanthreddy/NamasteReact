@@ -6,6 +6,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; // use stable version @6.23.1 
+import RestaurantMenu from "./components/RestaurantMenu";
 
                          
    
@@ -35,6 +36,10 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"; 
         {
           path : "/contact",
           element : <Contact />
+        },
+        {
+          path : "/restaurants/:resId",
+          element : <RestaurantMenu />
         }
       ],
        errorElement : <Error />
