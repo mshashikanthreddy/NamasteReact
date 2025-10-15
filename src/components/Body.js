@@ -10,7 +10,7 @@ const Body = () => {
     /* Always use the useState function in a component and avoid using it outside of component,
         Inside "if", "for" , any function which creates hindrance to React application. */
     
-    const [ListOfRestaurants, setListOfRest]  = useState([]); 
+    const [listOfRestaurants, setListOfRest]  = useState([]); 
     const [filteredRestaurant , setFilteredRestaurant] = useState([]);
     const [searchText , setSearchText] = useState("");
     
@@ -37,7 +37,7 @@ const Body = () => {
    }
 
    //conditional Rendering
-   return ListOfRestaurants.length === 0?<Shimmer />:(
+   return listOfRestaurants.length === 0?<Shimmer />:(
           <div className="body">
               <div className="filter">
                 <div className="search">
@@ -49,7 +49,7 @@ const Body = () => {
                 <button
                     onClick={() => {
                         //Filter the restaurant cards and updates UI for each value like for each "letter" it re-renders.
-                        const filteredRestaurant = ListOfRestaurants.filter(
+                        const filteredRestaurant = listOfRestaurants.filter(
                             (res) => res.info.name.toLowerCase().includes(searchText)
                         );                  
                     setFilteredRestaurant(filteredRestaurant);
@@ -61,7 +61,7 @@ const Body = () => {
                 </div>
                 <button className="filter-btn"
                 onClick={() => {
-                    const filteredList = ListOfRestaurants.filter(
+                    const filteredList = listOfRestaurants.filter(
                     (res) => res.info.avgRating > 4.6
                 );
                 setFilteredRestaurant(filteredList); // Here we are using "setListOfRest" which is function which updates list when it is called.
@@ -74,6 +74,11 @@ const Body = () => {
                     <RestaurantCard key={restaurant.info.id} resData={restaurant} /> 
                   ))};
               </div>
+              <div className="menu-container">
+                {resInfo.map((menu) => (
+                    <RestaurantMenu  key={menu?.info?.id} resInfo={menu}/>
+                ))}
+            </div>
           </div>
       )
   } 
