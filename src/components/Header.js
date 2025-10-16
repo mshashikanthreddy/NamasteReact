@@ -5,17 +5,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
 
 const [btnNameReact,setBtnNameReact] = useState("Login");
-console.log("Header Render"); // Here once "setBtnNameReact" function notices a change it automatically re-renders entire "Header" component.
+console.log("Header Render"); 
+// Here once "setBtnNameReact" function notices a change it automatically re-renders entire "Header" component.
 
-/* when setBtnNameReact function notice change and returns updated value to "useState"
-    and "useState" sets the new value to "setBtnNameReact" function which assigns new value to "const"
-    variable.*/
-/* Actually, const variable cannot be reassigned but when it re-renders the new "const" variable is again 
-    created which is assigned to new value */ 
 
-// if no dependency array => useEffect is called on every render
-// if there is dependency array([]) => useEffect just render only once on intial render.
-// if dependency is [btnNameReact] => useEffect is called every time btnNameReact.
 useEffect(() => {
 
 },[btnNameReact]);

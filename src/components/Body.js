@@ -4,23 +4,12 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-    // "Hooks" gives the access to use state variable and other react features without writing a class.
-    //Local State Variable - super powerful variable 
-
-    /* Always use the useState function in a component and avoid using it outside of component,
-        Inside "if", "for" , any function which creates hindrance to React application. */
     
     const [listOfRestaurants, setListOfRest]  = useState([]); 
     const [filteredRestaurant , setFilteredRestaurant] = useState([]);
     const [searchText , setSearchText] = useState("");
     
-    /* "React" follows Loads->render->API->re-renders.
-        which is the best practice rather than displaying blank page which is not a best practice.
 
-    /* when user clicks on URL the body starts rendering with old data which already have and then it calls "useEffect"
-       which takes one callback function and an dependency array which re-runs when it changes.
-       "useEffect" used to fetch api's of outside sites, event listeners,handlers which re-renders the "DOM".
-    */
    useEffect(()=> {
     fetchData();
    },[])
